@@ -12,6 +12,7 @@ var Size = require('size.js');
 var SpaceCamp = require('space-camp.js');
 var System = require('system.js');
 var Network = require('network.js');
+var Utilities = require('utilities.js');
 
 var RenderService;
 
@@ -207,12 +208,12 @@ function ConsumableHtb(configs) {
                         networkId: parcel.xSlotRef.networkId,
                         siteId: parcel.xSlotRef.siteId,
                         zoneIds: parcel.xSlotRef.zoneIds,
+                        unitId: parcel.xSlotRef.unitId,
+                        unitName: parcel.xSlotRef.unitName,
                         divName: parcel.xSlotName,
                         adTypes: parcel.xSlotRef.sizes
                             .map(sizeToAdType)
-                            .filter(function (adType) {
-                                return typeof adType === 'number';
-                            })
+                            .filter(Utilities.isNumber)
                     };
                 }),
                 time: System.now(),
